@@ -8,5 +8,5 @@ import thunk from 'redux-thunk';
 //  Установить redux-thunk  и принять внурь composeWithDevTools(applyMiddleware(thunk))
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
+//Создать store  нужно с помощью createStore
 export default store;

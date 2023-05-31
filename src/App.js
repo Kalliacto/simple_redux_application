@@ -10,7 +10,7 @@ function App() {
     return (
         <div className='App'>
             <CounterPage />
-            <ProductsPage />
+            {/* <ProductsPage /> */}
         </div>
     );
 }
