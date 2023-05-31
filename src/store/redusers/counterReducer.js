@@ -1,7 +1,7 @@
 import { DECREMENT, INCREASE, INCREMENT } from '../types/types';
 
 const initialState = {
-    value: 10,
+    value: 1,
     flag: true,
 };
 

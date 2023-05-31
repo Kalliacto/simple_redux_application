@@ -12,13 +12,13 @@ export function loadingProducts(data) {
     };
 }
 
-export function getAllProducts() {
+export function getAllProducts(num) {
     return (dispatch) => {
         dispatch(loadingProducts(true));
-        fetch('https://rickandmortyapi.com/api/character')
-            // fetch('https://fakerapi.it/api/v1/images?_quantity=1&_type=kittens&_height=300')
+        // fetch('https://rickandmortyapi.com/api/character')
+        fetch(`https://fakerapi.it/api/v1/images?_quantity=${num}&_type=pokemon&_height=50`)
             .then((res) => res.json())
-            .then((data) => dispatch(addAllProducts(data?.results)))
+            .then((data) => dispatch(addAllProducts(data)))
             .finally(() => dispatch(loadingProducts(false)));
         // .then((data) => dispatch({
         //         type: 'PRODUCTS_ADD_ALL',

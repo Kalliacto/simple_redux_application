@@ -28,8 +28,8 @@ const CounterPage = (props) => {
         <div className='block'>
             <h1>Счетчик: {counter}</h1>
             <div className='btns'>
-                <button onClick={() => handleIncrement(10)}>Добавить 10</button>
-                <button onClick={() => handleDecrement(10)}>Убавить 10</button>
+                <button onClick={() => handleIncrement(1)}>Добавить 1</button>
+                <button onClick={() => handleDecrement(1)}>Убавить 1</button>
                 <button onClick={() => handleIncrease(2)}>Умножить на 2</button>
             </div>
         </div>

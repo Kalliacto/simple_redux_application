@@ -8,9 +8,12 @@ const initialState = {
 function productsReducer(state = initialState, action) {
     switch (action.type) {
         case PRODUCTS_ADD_ALL:
-            return { ...state, list: action.payload };
+            console.log(state.list, action.payload.data);
+            return { ...state, list: [...state.list, ...action.payload.data] };
         case PRODUCTS_SET_LOADING:
             return { ...state, iLoading: action.payload };
+        case 'DELETE':
+            return { ...state, list: [] };
         default:
             return state;
     }

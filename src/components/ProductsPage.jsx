@@ -1,31 +1,39 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './style.css';
 import React from 'react';
-import { addAllProducts, getAllProducts } from '../store/actions/productsActions';
-import store from '../store/store';
+import { getAllProducts } from '../store/actions/productsActions';
 
 const ProductsPage = (props) => {
     // const rickyState = useSelector((s) => s.products.list);
-    const { list, iLoading } = useSelector((s) => s.products);
+    // const { list, iLoading } = useSelector((s) => s.products);
+    const { list: pokemons, iLoading } = useSelector((s) => s.products);
+    const { value: count } = useSelector((s) => s.counter);
+
     const dispatch = useDispatch();
 
-    const handleLoad = () => {
-        dispatch(getAllProducts());
+    const handleLoad = (data) => {
+        dispatch(getAllProducts(data));
     };
+
     return (
-        <div>
-            <div>ProductsPage</div>
-            <button onClick={handleLoad}>Ckick me</button>
+        <div className='products__wrap block'>
+            <div>Pokemon List</div>
+            <div className='btns'>
+                <button onClick={() => handleLoad(count)}>Добавить покемонов</button>
+                <button onClick={() => dispatch({ type: 'DELETE' })}>Удалить покемонов</button>
+            </div>
             {iLoading ? (
                 'LOADING'
             ) : (
                 <div className='products'>
-                    {list.map((item) => {
+                    {pokemons.map((item, i) => {
                         return (
-                            <div className='products__list' key={item.id}>
-                                <span>{item.name}</span>
-                                <span>{item.status}</span>
-                                <img src={item.image} alt='' />
+                            <div className='products__list' key={i}>
+                                <span>{item.title}</span>
+                                {/*<span>{item.status}</span>*/}
+                                <div className='img__wrap'>
+                                    <img src={item.url} alt='' />
+                                </div>
                             </div>
                         );
                     })}
